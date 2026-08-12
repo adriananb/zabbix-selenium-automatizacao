@@ -1,0 +1,33 @@
+# assistente de atendimento
+
+while True:  # Laço principal: reinicia o atendimento do começo
+    nome = input("Olá! Bem-vindo. Sou o assistente de atendimento da Empresa Elétrica Vivi e Cia. Informe por favor o seu nome: ")
+    print(f"Olá, {nome}! Como posso ajudar você hoje?")
+
+    while True:  # Laço do problema
+        problema = input("\nDescreva o seu problema: ").lower()
+
+        if "luz" in problema or "energia" in problema or "poste" in problema or "apagão" in problema:
+            print("\nEsse problema deve ser tratado pela sua operadora de energia.")
+            print("Por favor, entre em contato com a concessionária da sua cidade.")
+            print("Encerrando atendimento...\n" + "-"*40)
+            break  # Sai do laço do problema e volta a pedir o NOME (laço principal)
+        else:
+            break  # Sai do laço do problema e avança para a pergunta do CEP abaixo
+
+    # Se a primeira condição deu 'break' no if de emergência, recomeça o ciclo do cliente
+    if "luz" in problema or "energia" in problema or "poste" in problema or "apagão" in problema:
+        continue
+
+    # Bloco do CEP (agora fora do laço do problema)
+    while True:
+        cep = input("\nInforme seu CEP: ")
+        correto = input(f"Obrigado! O {cep} está correto? (Sim/Não): ").lower()
+
+        if correto == "sim" or correto == "s":
+            print("Vamos verificar se atendemos sua região e já te retornamos. Agradecemos pela preferencia!")
+            break
+        elif correto == "não" or correto == "nao" or correto == "n":
+            print("Ops! Vamos digitar o CEP novamente.")
+        else:
+            print("Opção inválida. Digite Sim ou Não.")
